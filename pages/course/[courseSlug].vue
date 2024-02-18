@@ -66,14 +66,14 @@
           autogrow
         />
       </q-form>
-      <template #footer?>
+      <template #footer>
         <ClientOnly>
           <q-btn
             v-if="prevCourse"
             label="이전 강의"
             color="primary"
             unelevated
-            :to="prevCourse.path"
+            @click="movePage(prevCourse.path)"
           />
           <q-space />
           <q-btn
@@ -81,7 +81,7 @@
             label="다음 강의"
             color="primary"
             unelevated
-            :to="nextCourse.path"
+            @click="movePage(nextCourse.path)"
           />
         </ClientOnly>
       </template>
@@ -103,6 +103,10 @@ definePageMeta({
 
 const memo = ref('');
 const completed = ref(false);
+
+const movePage = async (path: string) => {
+  await navigateTo(path);
+};
 </script>
 
 <style scoped></style>
