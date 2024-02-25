@@ -1,8 +1,8 @@
 <template>
   <q-page padding>
-    <div class=".q-my-xl tex-center">
-      <div class="text-h4">All Courses</div>
-      <p class="q-mt-sm text-grey-8">Nuxt3을 학습해보자</p>
+    <div class=".q-my-xl text-center">
+      <PageTitle title="All Courses" />
+      <PageDescription description="Nuxt3을 학습해보자" />
     </div>
     <div class="row q-col-gutter-lg">
       <div

@@ -9,8 +9,8 @@
         </q-header>
       </template>
       <div class="q-my-xl text-center">
-        <div class="text-h4">Layout 재정의</div>
-        <p class="q-mt-sm text-grey-8">Admin Layout 테스트</p>
+        <PageTitle title="Layout 재정의" />
+        <PageDescription description="Admin Layout 테스트" />
       </div>
     </NuxtLayout>
   </div>
