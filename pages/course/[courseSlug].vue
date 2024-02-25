@@ -54,7 +54,7 @@
           unelevated
           :outline="completed ? false : true"
           :icon="completed ? 'check' : undefined"
-          @click="completed = !completed"
+          @click="toggleComplete"
         />
         <q-input
           v-model="memo"
@@ -94,11 +94,31 @@ const route = useRoute();
 const courseSlug = route.params.courseSlug as string;
 const { course, prevCourse, nextCourse } = useCourse(courseSlug);
 
+// if (!course) {
+//   throw createError({
+//     statusCode: 404,
+//     statusMessage: 'Course Not Found',
+//     // fatal: true, // 치명적 오류
+//   });
+// }
+
 definePageMeta({
   key: (route) => route.fullPath,
   title: 'My HomePage',
   pageType: '',
-  keepalive: true,
+  alias: ['/lecture/:courseSlug'],
+  // keepalive: true,
+  validate: (route) => {
+    const courseSlug = route.params.courseSlug as string;
+    const { course } = useCourse(courseSlug);
+    if (!course) {
+      throw createError({
+        statusCode: 404,
+        statusMessage: 'Course Not Found',
+      });
+    }
+    return true;
+  },
 });
 
 const memo = ref('');
@@ -106,6 +126,12 @@ const completed = ref(false);
 
 const movePage = async (path: string) => {
   await navigateTo(path);
+};
+
+const toggleComplete = () => {
+  // showError('에러가 발생했습니다.');
+  completed.value = !completed.value;
+  throw createError('에러가 발생했습니다.');
 };
 </script>
 
