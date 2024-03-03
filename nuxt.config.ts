@@ -9,7 +9,18 @@ export default defineNuxtConfig({
     'nuxt-quasar-ui',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
+    '@nuxtjs/i18n',
   ],
+  i18n: {
+    locales: ['en', 'ko'],
+    defaultLocale: 'ko',
+    vueI18n: './i18n.config.ts',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root',
+    },
+  },
   quasar: {
     plugins: ['Notify'],
     config: {
@@ -18,14 +29,7 @@ export default defineNuxtConfig({
       },
     },
   },
-  imports: {
-    presets: [
-      {
-        from: 'vue-i18n',
-        imports: ['useI18n'],
-      },
-    ],
-  },
+  imports: {},
   app: {
     head: {
       title: 'title 테스트',

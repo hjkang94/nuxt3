@@ -28,16 +28,14 @@
         <q-separator dark vertical />
         <q-btn-dropdown stretch flat no-caps :label="selectedLanguageName">
           <q-list padding dense>
-            <q-item
-              v-for="{ code, name } in languages"
-              :key="code"
-              v-close-popup
-              clickable
-              :active="$i18n.locale === code"
-              @click="$i18n.locale = code"
-            >
+            <q-item v-close-popup clickable :to="localePath('/', 'en')">
               <q-item-section>
-                <q-item-label>{{ name }}</q-item-label>
+                <q-item-label>English</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-item v-close-popup clickable :to="switchLocalePath('ko')">
+              <q-item-section>
+                <q-item-label>한국어</q-item-label>
               </q-item-section>
             </q-item>
           </q-list>
@@ -93,6 +91,9 @@ const moveYoutube = async () => {
   });
 };
 
+const localePath = useLocalePath();
+const switchLocalePath = useSwitchLocalePath();
+
 interface Language {
   name: string;
   code: 'en' | 'ko';
@@ -112,6 +113,4 @@ const { locale } = useI18n();
 const selectedLanguageName = computed(
   () => languages.value.find((lang) => lang.code === locale.value)?.name,
 );
-
-watch(locale, (val) => (useCookie('locale').value = val));
 </script>
