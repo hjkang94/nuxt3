@@ -42,4 +42,11 @@ export default defineNuxtConfig({
       ],
     },
   },
+  runtimeConfig: {
+    authCookieName: '__user',
+    jwtSecretKey: 'superkey',
+    public: {
+      clientConfigValue: 'test', // 클라이언트에서 사용하기 위함
+    },
+  },
 });
