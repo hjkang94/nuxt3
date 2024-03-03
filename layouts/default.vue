@@ -2,7 +2,7 @@
   <q-layout view="hHh lpR fFf" class="bg-grey-2">
     <q-header elevated class="bg-dark text-white">
       <q-toolbar>
-        <q-toolbar-title> Nuxt3 </q-toolbar-title>
+        <q-toolbar-title> {{ appConfig.title }} </q-toolbar-title>
         <NuxtLink v-slot="{ navigate }" custom to="/">
           <q-btn stretch flat :label="$t('home')" no-caps @click="navigate" />
         </NuxtLink>
@@ -113,4 +113,7 @@ const { locale } = useI18n();
 const selectedLanguageName = computed(
   () => languages.value.find((lang) => lang.code === locale.value)?.name,
 );
+
+const appConfig = useAppConfig();
+console.log('appConfig: ', appConfig);
 </script>
