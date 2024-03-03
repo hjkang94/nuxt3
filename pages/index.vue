@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-const { courses } = useCourses();
+const { courses } = await useCourses();
 </script>
 
 <style lang="scss" scoped></style>
