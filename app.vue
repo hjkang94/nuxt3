@@ -18,6 +18,9 @@ const description = ref('Nuxt3 Example Project');
 // });
 useSeoMeta({
   title,
+  titleTemplate: (titleChunk) => {
+    return titleChunk ? `${titleChunk} - Vue & Nuxt` : 'Vue & Nuxt';
+  },
   description,
   ogTitle: title,
   ogDescription: description,
