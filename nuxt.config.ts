@@ -26,4 +26,15 @@ export default defineNuxtConfig({
       },
     ],
   },
+  app: {
+    head: {
+      title: 'title 테스트',
+      meta: [
+        {
+          name: 'SEO name 테스트',
+          content: 'SEO content 테스트',
+        },
+      ],
+    },
+  },
 });
